@@ -1,7 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
 
-# ✅ changed to absolute imports
+# changed to absolute imports
 from app.core import create_app
 from app.resume_processor import extract_text
 from app.ranking import rank_resumes
