@@ -26,7 +26,7 @@ function App() {
     resumes.forEach((file) => formData.append("resumes", file));
 
     try {
-      const response = await fetch("http://localhost:8000/match_rank", {
+      const response = await fetch("https://ai-powered-resume-scanner-k9j4.onrender.com/match_rank", {
         method: "POST",
         body: formData,
       });
