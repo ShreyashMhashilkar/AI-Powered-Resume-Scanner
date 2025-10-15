@@ -1,8 +1,8 @@
 from fastapi import FastAPI, File, UploadFile, Form
 from typing import List
-from app.core import create_app
-from app.resume_processor import extract_text
-from app.ranking import rank_resumes
+from core import create_app
+from resume_processor import extract_text
+from ranking import rank_resumes
 
 app: FastAPI = create_app()
 
