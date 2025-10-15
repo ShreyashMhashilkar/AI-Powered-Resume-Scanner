@@ -27,6 +27,7 @@ function App() {
 
     try {
       const apiUrl = process.env.REACT_APP_API_URL + "/match_rank";
+      console.log('apiUrl'+apiUrl);
       const response = await fetch(apiUrl, {
         method: "POST",
         body: formData,
