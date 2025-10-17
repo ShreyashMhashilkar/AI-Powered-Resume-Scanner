@@ -6,7 +6,7 @@ from app.ranking import rank_resumes
 
 app: FastAPI = create_app()
 
-@app.post("/match_rank")
+@app.post("/scan")
 async def match_rank(
     jd: str = Form(...), 
     resumes: List[UploadFile] = File(...)
