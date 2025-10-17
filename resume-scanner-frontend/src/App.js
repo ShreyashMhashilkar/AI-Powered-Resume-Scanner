@@ -14,6 +14,9 @@ function App() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // ✅ Hardcoded API URL for Render
+  const apiUrl = "https://resume-scanner-backend.onrender.com";
+
   const onSubmit = async () => {
     if (!jd || resumes.length === 0) {
       alert("Please enter a job description and upload resumes");
@@ -23,20 +26,20 @@ function App() {
     setLoading(true);
     const formData = new FormData();
     formData.append("jd", jd);
-    resumes.forEach((file) => formData.append("resumes", file));
+
+    // Ensure key name matches backend
+    resumes.forEach((file) => {
+      formData.append("resumes", file);
+    });
 
     try {
-      // Use deployed backend URL if available, otherwise fallback to local
-      const apiUrl =
-        process.env.REACT_APP_API_URL 
-      console.log("apiurl "+apiUrl);
+      console.log("API URL:", apiUrl);
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
         body: formData,
       });
 
       if (!response.ok) {
-        // Handle non-200 responses
         const errorText = await response.text();
         console.error("Backend error:", errorText);
         alert(
@@ -47,8 +50,6 @@ function App() {
       }
 
       const data = await response.json();
-
-      // Safely access results
       if (data && data.results) {
         setResults(data.results);
       } else {
