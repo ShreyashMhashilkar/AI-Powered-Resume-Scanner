@@ -26,7 +26,7 @@ function App() {
     resumes.forEach((file) => formData.append("resumes", file));
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL + "/match_rank";
+      const apiUrl = process.env.REACT_APP_API_URL + "/scan";
       console.log('apiUrl'+apiUrl);
       const response = await fetch(apiUrl, {
         method: "POST",
