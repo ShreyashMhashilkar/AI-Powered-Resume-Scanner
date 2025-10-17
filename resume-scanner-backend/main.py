@@ -10,6 +10,7 @@ app: FastAPI = create_app()
 async def match_rank(
     jd: str = Form(...), 
     resumes: List[UploadFile] = File(...)
+    print("Received resumes:", [r.filename for r in resumes])
 ):
     resume_texts = []
     filenames = []
