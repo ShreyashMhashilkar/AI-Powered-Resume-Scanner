@@ -26,16 +26,40 @@ function App() {
     resumes.forEach((file) => formData.append("resumes", file));
 
     try {
-      const apiUrl = process.env.REACT_APP_API_URL + "/scan";
-      console.log('apiUrl'+apiUrl);
-      const response = await fetch(apiUrl, {
+      // Use deployed backend URL if available, otherwise fallback to local
+      const apiUrl =
+        process.env.REACT_APP_API_URL 
+      const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        // Handle non-200 responses
+        const errorText = await response.text();
+        console.error("Backend error:", errorText);
+        alert(
+          `Error submitting data. Backend returned status ${response.status}`
+        );
+        setResults([]);
+        return;
+      }
+
       const data = await response.json();
-      setResults(data.results);
+
+      // Safely access results
+      if (data && data.results) {
+        setResults(data.results);
+      } else {
+        setResults([]);
+        alert("No results returned from backend.");
+      }
     } catch (error) {
-      alert("Error submitting data. Make sure backend is running.");
+      console.error("Fetch error:", error);
+      alert(
+        "Error submitting data. Make sure backend is running and CORS is configured correctly."
+      );
+      setResults([]);
     } finally {
       setLoading(false);
     }
