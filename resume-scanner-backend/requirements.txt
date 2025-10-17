@@ -4,3 +4,4 @@ PyPDF2
 python-docx
 spacy
 scikit-learn
+python-multipart
