@@ -29,6 +29,7 @@ function App() {
       // Use deployed backend URL if available, otherwise fallback to local
       const apiUrl =
         process.env.REACT_APP_API_URL 
+      console.log("apiurl "+apiUrl);
       const response = await fetch(`${apiUrl}/scan`, {
         method: "POST",
         body: formData,
