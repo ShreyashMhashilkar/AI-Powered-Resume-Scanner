@@ -8,10 +8,11 @@ app: FastAPI = create_app()
 
 @app.post("/scan")
 async def match_rank(
-    jd: str = Form(...), 
+    jd: str = Form(...),
     resumes: List[UploadFile] = File(...)
-    print("Received resumes:", [r.filename for r in resumes])
 ):
+    print(" Received resumes:", [r.filename for r in resumes])
+
     resume_texts = []
     filenames = []
 
@@ -23,3 +24,8 @@ async def match_rank(
 
     results = rank_resumes(jd, resume_texts, filenames)
     return {"results": results}
+
+
+@app.get("/")
+async def root():
+    return {"message": " AI Resume Scanner Backend is Running (Lightweight TF-IDF)"}

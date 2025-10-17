@@ -1,7 +1,6 @@
 fastapi
-uvicorn[standard]
-python-multipart
+uvicorn
 PyPDF2
 python-docx
-spacy==3.8.7
-sentence-transformers
+spacy
+scikit-learn
