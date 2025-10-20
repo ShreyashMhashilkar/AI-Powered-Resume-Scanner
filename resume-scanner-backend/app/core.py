@@ -1,8 +1,8 @@
-from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
 
 def create_app():
-    app = FastAPI(title="AI-Powered Resume Scanner")
+    app = FastAPI(title="AI-Powered Resume Scanner (Advanced ML)")
 
     app.add_middleware(
         CORSMiddleware,

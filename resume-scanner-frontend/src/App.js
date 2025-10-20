@@ -15,7 +15,7 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   // ✅ Hardcoded API URL for Render
-  const apiUrl = "https://resume-scanner-backend.onrender.com";
+  const apiUrl = "http://localhost:8000";;
 
   const onSubmit = async () => {
     if (!jd || resumes.length === 0) {

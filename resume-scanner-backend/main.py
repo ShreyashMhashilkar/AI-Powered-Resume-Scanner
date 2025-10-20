@@ -11,14 +11,6 @@ async def match_rank(
     jd: str = Form(...),
     resumes: List[UploadFile] = File(...)
 ):
-    print("JD received:", jd)
-    print("Resumes received:", resumes)
-    for r in resumes:
-        print("Filename:", r.filename)
-    # return {"status": "ok"}0
-
-    # print(" Received resumes:", [r.filename for r in resumes])
-
     resume_texts = []
     filenames = []
 
@@ -34,4 +26,4 @@ async def match_rank(
 
 @app.get("/")
 async def root():
-    return {"message": " AI Resume Scanner Backend is Running (Lightweight TF-IDF)"}
+    return {"message": "AI Resume Scanner Backend is Running (Advanced ML)"}
