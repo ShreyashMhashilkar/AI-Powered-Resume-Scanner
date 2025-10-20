@@ -11,7 +11,13 @@ async def match_rank(
     jd: str = Form(...),
     resumes: List[UploadFile] = File(...)
 ):
-    print(" Received resumes:", [r.filename for r in resumes])
+    print("JD received:", jd)
+    print("Resumes received:", resumes)
+    for r in resumes:
+        print("Filename:", r.filename)
+    # return {"status": "ok"}0
+
+    # print(" Received resumes:", [r.filename for r in resumes])
 
     resume_texts = []
     filenames = []
